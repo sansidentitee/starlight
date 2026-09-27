@@ -1,0 +1,15 @@
+export type Quadrant = 'inbox' | 'do' | 'plan' | 'delegate' | 'eliminate';
+export type Task = { id: string; title: string; subjectId: string; quadrant: Quadrant; done: boolean; due: string; minutes: number; difficulty: number; energy: 'low' | 'medium' | 'high'; notes: string; subtasks: { id: string; title: string; done: boolean }[]; recurrence: 'none' | 'daily' | 'weekly'; attachment?: string };
+export type CalendarEvent = { id: string; title: string; date: string; time: string; minutes: number; subjectId: string; taskId?: string };
+export type Chapter = { id: string; title: string; mastery: number; lastReviewed: string; nextReview: string; question: string; answer: string; exercise?: string; solution?: string; notes?: string; errors?: string };
+export type Subject = { id: string; name: string; color: string; icon: string; chapters: Chapter[] };
+export type FocusSession = { id: string; date: string; minutes: number; distractions: number; taskId: string; mode: string };
+export type Grade = { id: string; subjectId: string; title: string; score: number; outOf: number; coefficient: number; date: string; errors: string[]; chapter?: string };
+export type Goal = { id: string; title: string; vision: string; due: string; milestones: { id: string; title: string; done: boolean }[] };
+export type Note = { id: string; title: string; body: string; subjectId: string; kind: string; updatedAt: string; links: string[] };
+export type Resource = { id: string; title: string; url: string; subjectId: string; kind: string; starred: boolean };
+export type WeeklyReview = { id: string; date: string; wins: string; challenges: string; nextWeek: string };
+export type Settings = { name: string; appearance: 'warm' | 'pure' | 'light'; accent: 'peach' | 'rose' | 'amber'; glass: number; blur: number; motion: boolean; neumorphism: boolean; focusMinutes: number; weeklyTarget: number };
+export type AppData = { version: 1; tasks: Task[]; events: CalendarEvent[]; subjects: Subject[]; sessions: FocusSession[]; grades: Grade[]; goals: Goal[]; notes: Note[]; resources: Resource[]; reviews: WeeklyReview[]; settings: Settings };
+export const pageIds = ['dashboard','tasks','focus','calendar','subjects','revision','analytics','grades','goals','notes','library','strategy','settings'] as const;
+export type PageId = typeof pageIds[number];

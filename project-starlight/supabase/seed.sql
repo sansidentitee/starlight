@@ -1,0 +1,13 @@
+-- Project Starlight deliberately does not seed auth.users or another user's data.
+-- Apply migrations/001_starlight.sql, configure the two public environment values,
+-- then sign up/sign in through Settings in the application.
+--
+-- createDemoData() initializes a new empty account with its own demonstration
+-- tasks, subjects, notes, grades and resources. save_workspace(data, 0) creates
+-- that account's snapshot under its authenticated session and RLS policies.
+-- Existing workspaces must be loaded, not replaced by a global SQL seed.
+--
+-- The SQL Editor normally has no application user session (auth.uid() is null).
+-- Do not add an arbitrary user UUID or disable RLS to work around that behavior.
+-- This file is informational and makes no persistent changes.
+select 'Demo data is initialized by the application for the signed-in user.' as seed_info;
